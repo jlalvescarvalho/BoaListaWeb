@@ -17,22 +17,31 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="TipoProdutoBean")
 public class ControllerTipoProdutoBean implements InterfaceController{
 
-    private TipoProduto TipoProduto;
+    private TipoProduto tipoProduto;
     private RepositorioTipoProduto repTipoProduto=null;
     
     public ControllerTipoProdutoBean(){
-        TipoProduto = new TipoProduto();
+        tipoProduto = new TipoProduto();
         repTipoProduto = new RepositorioTipoProduto();
     }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+    
     
     @Override
     public void inserir() {
-        repTipoProduto.inserir(TipoProduto);
+        repTipoProduto.inserir(tipoProduto);
     }
 
     @Override
     public void alterar() {
-        repTipoProduto.alterar(TipoProduto);
+        repTipoProduto.alterar(tipoProduto);
     }
 
     @Override
@@ -42,7 +51,7 @@ public class ControllerTipoProdutoBean implements InterfaceController{
 
     @Override
     public void excluir() {
-       repTipoProduto.excluir(TipoProduto);
+       repTipoProduto.excluir(tipoProduto);
     }
 
     @Override
