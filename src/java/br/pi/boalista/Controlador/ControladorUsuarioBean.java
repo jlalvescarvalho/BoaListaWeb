@@ -17,7 +17,7 @@ import javax.faces.bean.ManagedBean;
  */
 
 @ManagedBean(name="UsuarioBean")
-public class ControladorUsuarioBean {
+public class ControladorUsuarioBean implements InterfaceController{
     
     private RepositorioUsuario repUsuario = null;
     private Usuario usuario;
@@ -36,20 +36,31 @@ public class ControladorUsuarioBean {
     public void setUsuario() {
         this.usuario = usuario;
     }
-       
-    public void inserir(){
+
+    @Override
+    public void inserir() {
         repUsuario.inserir(usuario);
     }
-    public void alterar(){
+
+    @Override
+    public void alterar() {
         repUsuario.alterar(usuario);
     }
-    public List<Usuario> recuperarTodos() {
-        return repUsuario.recuperarTodos();
+
+    @Override
+    public List<Object> recuperarTodos() {
+        return null;
     }
+
+    @Override
     public void excluir() {
-      repUsuario.excluir(usuario);
+        repUsuario.excluir(usuario);
     }
+
+    @Override
     public Usuario recuperar(Long id) {
-        return repUsuario.recuperar(id);
+         return repUsuario.recuperar(id);
+                 
     }
-}
+}    
+    

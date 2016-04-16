@@ -11,8 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.swing.JOptionPane;
 
 @ManagedBean(name="ProdutoBean")
-
-public class ControladorProdutoBean{
+public class ControladorProdutoBean implements InterfaceController{
     
     private RepositorioProduto repProduto = null;
     private Produto produto;
@@ -32,21 +31,29 @@ public class ControladorProdutoBean{
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-   
-    public void inserir(){
+
+    @Override
+    public void inserir() {
         repProduto.inserir(produto);
-        
     }
-    public void alterar(Produto produto){
+
+    @Override
+    public void alterar() {
         repProduto.alterar(produto);
     }
-    public List<Produto> recuperarTodos() {
-        return repProduto.recuperarTodos();
+
+    @Override
+    public List<Object> recuperarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public void excluir(Produto produto) {
-      repProduto.excluir(produto);
+
+    @Override
+    public void excluir() {
+       repProduto.excluir(produto);
     }
-    public Produto recuperar(Long id) {
+
+    @Override
+    public Object recuperar(Long id) {
         return repProduto.recuperar(id);
     }
 }
