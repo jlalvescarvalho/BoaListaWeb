@@ -3,8 +3,10 @@ package br.pi.boalista.Modelo;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,8 +25,8 @@ public class TipoProduto implements Serializable {
     @Column
     private double valor;
     
-    
-    
+    @OneToMany
+    private List<Produto> produtos;
     
 
     public TipoProduto(String nome, double valor) {

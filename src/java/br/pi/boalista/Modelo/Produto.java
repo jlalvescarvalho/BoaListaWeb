@@ -1,10 +1,13 @@
 package br.pi.boalista.Modelo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 
 
 
@@ -19,9 +22,10 @@ public class Produto implements Serializable {
     @Column
     private String nome;
    
-    
-    
-
+    @OneToOne
+    private TipoProduto tipoProduto;
+    @OneToOne
+    private Marca marca;
  
     public Produto(int codigo, String nome) {
         this.codigo = codigo;

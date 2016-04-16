@@ -1,9 +1,11 @@
 package br.pi.boalista.Modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 @Entity(name="marca")
@@ -14,7 +16,9 @@ public class Marca implements Serializable {
     private long id;
     private String marca;
     
-
+    @OneToMany
+    private List<Produto> listaProdutos;
+    
     public Marca(String marca) {
         this.marca = marca;
         
