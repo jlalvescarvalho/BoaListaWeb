@@ -11,19 +11,8 @@
         <title>Tela Principal</title>
     </h:head>
     <h:body>
-        <h2>Cadastrar Produto</h2><br/>
         <h:link value="Cadastrar Usuario" outcome="CadastrarUsuario.xhtml"/><br/><br/>
-      <h:form> 
-          <p:panelGrid columns="2">
-               <p:outputLabel for="codigo" value="Codigo:"/>
-               <p:inputText id="codigo" value="#{ProdutoBean.produto.codigo}"/>
-               <p:outputLabel for="nome" value="Nome:" /> 
-               <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
-               <p:commandButton value="Cadastrar" icon="ui-icon-star" action="#{ProdutoBean.inserir()}">
-                   <f:ajax render="@form" resetValues="true"/>
-               </p:commandButton>
-            </p:panelGrid> 
-        </h:form>
+        <h:link value="Cadastrar Produto" outcome="CadastrarProduto.xhtml"/><br/>
     </h:body>
 </html>
 
