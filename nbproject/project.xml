@@ -30,6 +30,13 @@
                     <file>${libs.MySQLDriver.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+<<<<<<< HEAD
+=======
+                <library dirs="200">
+                    <file>${file.reference.primefaces-5.3-sources.jar-1}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+>>>>>>> origin/master
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
