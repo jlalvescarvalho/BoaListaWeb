@@ -17,6 +17,12 @@
                <p:inputText id="codigo" value="#{ProdutoBean.produto.codigo}"/>
                <p:outputLabel for="nome" value="Nome:" /> 
                <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
+               <p:outputLabel for="marca" value="Marca"/>
+               <p:inputText id="marca" value="#{MarcaBean.marca.marca}"/>
+               <p:outputLabel for="tipo" value="Tipo do produto"/>
+               <p:inputText id="tipo" value="#{TipoProdutoBean.tipoProduto.nome}"/>
+               <p:outputLabel for="valor" value="Valor"/>
+               <p:inputText id="valor" value="#{TipoProdutoBean.tipoProduto.valor}"/>
                <p:commandButton value="Cadastrar" icon="ui-icon-star" action="#{ProdutoBean.inserir()}">
                    <f:ajax render="@form" resetValues="true"/>
                </p:commandButton>
