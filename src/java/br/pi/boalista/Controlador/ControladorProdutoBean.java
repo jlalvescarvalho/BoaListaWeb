@@ -43,8 +43,8 @@ public class ControladorProdutoBean implements InterfaceController{
     }
 
     @Override
-    public List<Object> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Produto> recuperarTodos() {
+        return repProduto.recuperarTodos();
     }
 
     @Override

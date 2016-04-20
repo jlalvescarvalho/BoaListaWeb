@@ -15,7 +15,7 @@ public interface InterfaceController {
     
     public void inserir();
     public void alterar();
-    public List<Object> recuperarTodos();
+    public List recuperarTodos();
     public void excluir();
     public Object recuperar(Long id);
     
