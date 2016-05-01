@@ -9,12 +9,14 @@ import br.pi.boalista.Modelo.Repositorio.RepositorioTipoProduto;
 import br.pi.boalista.Modelo.TipoProduto;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Luciano
  */
 @ManagedBean(name="TipoProdutoBean")
+@RequestScoped
 public class ControllerTipoProdutoBean implements InterfaceController{
 
     private TipoProduto tipoProduto;

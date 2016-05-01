@@ -5,24 +5,23 @@
  */
 package br.pi.boalista.Controlador;
 
+import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Marca;
 import br.pi.boalista.Modelo.Repositorio.RepositorioMarca;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-
-/**
- *
- * @author Kleriston
- */
-
+import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "MarcaBean")
-
+@RequestScoped
 public class ControladorMarcaBean implements InterfaceController {
     
     
     private RepositorioMarca repMarca = null;
     private Marca marca;
+    private List<SelectItem> MarcaSelected;
     
     public ControladorMarcaBean(){
         marca = new Marca();
@@ -38,6 +37,23 @@ public class ControladorMarcaBean implements InterfaceController {
         this.marca = marca;
     }
 
+    public List<SelectItem> getMarcaSelected() {
+        MarcaSelected = new ArrayList<SelectItem>();
+           List<Marca> ListaMarcas = DaoManagerHiber.getInstance().recoverAll("from marca");
+           
+           if(!ListaMarcas.isEmpty()){
+               SelectItem item;
+               for (int i=0; i<ListaMarcas.size(); i++) {
+                   item = new SelectItem(ListaMarcas.get(i).getMarca());
+                   MarcaSelected.add(item);
+               }
+           
+        }
+        
+        return MarcaSelected;
+    }
+
+
     @Override
     public void inserir() {
         repMarca.inserir(marca);
@@ -49,8 +65,8 @@ public class ControladorMarcaBean implements InterfaceController {
     }
 
     @Override
-    public List<Object> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Marca> recuperarTodos() {
+       return repMarca.recuperarTodos();
     }
 
     @Override

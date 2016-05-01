@@ -14,6 +14,7 @@ public class Marca implements Serializable {
     @Id
     @GeneratedValue
     private long id;
+    
     private String marca;
     
     @OneToMany

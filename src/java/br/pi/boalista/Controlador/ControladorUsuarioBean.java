@@ -10,6 +10,7 @@ import br.pi.boalista.Modelo.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
@@ -17,6 +18,7 @@ import javax.faces.bean.ManagedBean;
  */
 
 @ManagedBean(name="UsuarioBean")
+@RequestScoped
 public class ControladorUsuarioBean implements InterfaceController{
     
     private RepositorioUsuario repUsuario = null;
