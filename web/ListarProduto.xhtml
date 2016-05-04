@@ -9,6 +9,8 @@
          </h:head> 
     <h:body>
         <ui:include src="Menu2.xhtml"/>
+        <p:fieldset legend="Produtos Cadastrados">
+        
         <h:form>
             <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto">
                 <p:column headerText="Código">
@@ -18,15 +20,15 @@
                     <h:outputText value="#{produto.nome}" />
                 </p:column>
                 <p:column headerText="Marca">
-                    <h:outputText />
+                    <h:outputText value="#{MarcaBean.marca.marca}"/>
                 </p:column>
                 <p:column headerText="Tipo do Produto">
-                    <h:outputText/>
+                    <h:outputText value="#{TipoProdutoBean.tipoProduto.nome}"/>
                 </p:column>
             </p:dataTable>  
        
       </h:form>
-  
+  </p:fieldset>
    </h:body>
          
 </html>

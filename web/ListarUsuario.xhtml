@@ -12,14 +12,39 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Usuarios Cadastrados</title> 
+       
         <ui:include src="Menu2.xhtml"/>
-        <h1>Usuarios Cadastrados</h1>
+         <p:fieldset legend="Usuários Cadastrados">
+             
+             <h:form>
+                 <p:dataTable value="#{UsuarioBean.recuperarTodos()}">
+                     <p:column headerText="Nome">
+                        <h:outputText value="#{UsuarioBean.usuario.nome}"/>
+                     </p:column>
+                     
+                     <p:column headerText="Sobrenome">
+                         <h:outputText value="#{UsuarioBean.usuario.sobrenome}"/>
+                     </p:column>
+                     
+                     <p:column headerText="Email">
+                         <h:outputText value="#{UsuarioBean.usuario.email}"/>
+                     </p:column>
+                     
+                     <p:column headerText="Login">
+                         <h:outputText value="#{UsuarioBean.usuario.login}"/>
+                     </p:column>
+                     
+                 </p:dataTable>
+                 
+                 
+             </h:form>
+             
+        </p:fieldset>
         
         
         
        
-        <h:form>
-        </h:form>
+       
       </h:head>
     <body>
     </body>
