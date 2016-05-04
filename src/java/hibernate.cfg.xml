@@ -6,11 +6,11 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/boalistaface?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-<<<<<<< HEAD
+
     <property name="hibernate.connection.password">luciano</property>
-=======
+
     <property name="hibernate.connection.password">123456</property>
->>>>>>> origin/master
+
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
