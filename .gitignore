@@ -1,2 +1,5 @@
 /nbproject/private/
 /build/
+/src/java/hibernate.cfg.xml/
+/nbproject/project.xml/
+/nbproject/build-impl.xml/
