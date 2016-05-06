@@ -9,30 +9,34 @@
     </h:head>
     <h:body>
         <ui:include src="Menu2.xhtml"/>
-        <h2>Cadastrar Produto</h2><br/>
          
       <h:form> 
-          
-          <p:panelGrid columns="2">
+          <p:fieldset legend="Cadastro de Produto">
+              <p:commandButton value="Cadastrar Marca" action="CadastrarMarca.xhtml"/>
+              <p:commandButton value="Cadastrar Tipo" action="CadastrarTipo.xhtml"/>
+                <p:panelGrid columns="2">
+              
                <p:outputLabel for="codigo" value="Codigo:"/>
                <p:inputText id="codigo" value="#{ProdutoBean.produto.codigo}"/>
                <p:outputLabel for="nome" value="Nome:" /> 
                <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
                <p:outputLabel for="marca" value="Marca"/>
-               <p:panel> <p:selectOneMenu id="marca" value="#{MarcaBean.marca}" style="width:160px">
+               <p:selectOneMenu id="marca" value="#{MarcaBean.marca.marca}" style="width:235px">
                        <f:selectItem itemLabel="Marcas"/>
                        <f:selectItems value="#{MarcaBean.marcaSelected}"/>
-                   </p:selectOneMenu>
-                   <h:link value="Cadastrar Marca" outcome="CadastrarMarca.xhtml"/>
-               </p:panel>
+               </p:selectOneMenu>
                <p:outputLabel for="tipo" value="Tipo do produto"/>
-               <p:inputText id="tipo" value="#{TipoProdutoBean.tipoProduto.nome}"/>
+               <p:selectOneMenu id="tipo" value="#{TipoProdutoBean.tipoProduto.nome}" style="width: 235px">
+                   <f:selectItem itemLabel="Tipos de Produtos"/>
+                   <f:selectItems value="#{TipoProdutoBean.tipoSelected}"/>
+               </p:selectOneMenu>
                <p:outputLabel for="valor" value="Valor"/>
                <p:inputText id="valor" value="#{TipoProdutoBean.tipoProduto.valor}"/>
                <p:commandButton value="Cadastrar" icon="ui-icon-star" action="#{ProdutoBean.inserir()}">
                    <f:ajax render="@form" resetValues="true"/>
                </p:commandButton>
             </p:panelGrid> 
+          </p:fieldset>
         </h:form>
     </h:body>
 </html>
