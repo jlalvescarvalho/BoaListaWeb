@@ -21,7 +21,7 @@
                <p:outputLabel for="nome" value="Nome:" /> 
                <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
                <p:outputLabel for="marca" value="Marca"/>
-               <p:selectOneMenu id="marca" value="#{MarcaBean.marca.marca}" style="width:235px">
+               <p:selectOneMenu id="marca" value="#{MarcaBean.marca}" style="width:235px">
                        <f:selectItem itemLabel="Marcas"/>
                        <f:selectItems value="#{MarcaBean.marcaSelected}"/>
                </p:selectOneMenu>

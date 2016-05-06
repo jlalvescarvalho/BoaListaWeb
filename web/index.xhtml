@@ -6,11 +6,44 @@
     
     
     <h:head>
-        <title>Tela Principal</title>
+        <title>Inicio</title>
     <body>
+        <p:fieldset legend="Login">
+              <h:form>
+                  
+        <p:panelGrid columns="2" >
+      
+                <p:outputLabel for="login" value="Email:"/>
+                <p:inputText id="login" value=""/>
+                <p:outputLabel for="senha" value="Senha:"/>
+                <p:password id="senha" value=""/>
+               
+                <h:link value="Entrar" outcome="Menu2.xhtml"/>
+                
+            </p:panelGrid>
+           </h:form>
+        </p:fieldset>
+        <p:fieldset legend="Produtos"> 
         
-        <h:link value="Menu" outcome="Menu2.xhtml"/>
+        
+            <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto">
+                <p:column headerText="Código">
+                    <h:outputText value="#{produto.codigo}" />
+                </p:column>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{produto.nome}" />
+                </p:column>
+                <p:column headerText="Marca">
+                    <h:outputText value="#{MarcaBean.marca.marca}"/>
+                </p:column>
+                <p:column headerText="Tipo do Produto">
+                    <h:outputText value="#{TipoProdutoBean.tipoProduto.nome}"/>
+                </p:column>
+            </p:dataTable>  
        
+      
+  </p:fieldset>
+    
     </body>
         </h:head>
 </html>

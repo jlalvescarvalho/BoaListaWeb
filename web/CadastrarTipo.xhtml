@@ -18,7 +18,7 @@
                 <p:outputLabel for="marca" value="Marca"/>
                 <p:inputText id="marca" value="#{TipoProdutoBean.tipoProduto.nome}"/>
                 <p:outputLabel/>
-                <p:commandButton value="Cadastrar" icon="ui-icon-star" action="#{MarcaBean.inserir()}">
+                <p:commandButton value="Cadastrar" icon="ui-icon-star" action="#{TipoProdutoBean.inserir()}">
                     <f:ajax render="@form" resetValues="true"/>
                 </p:commandButton>
             </p:panelGrid>

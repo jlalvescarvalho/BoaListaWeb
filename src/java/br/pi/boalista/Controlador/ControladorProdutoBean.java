@@ -12,7 +12,6 @@ import javax.faces.bean.SessionScoped;
 import javax.swing.JOptionPane;
 
 @ManagedBean(name="ProdutoBean")
-@RequestScoped
 public class ControladorProdutoBean implements InterfaceController{
     
     private RepositorioProduto repProduto = null;
