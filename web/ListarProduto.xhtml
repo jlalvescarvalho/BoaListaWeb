@@ -9,11 +9,13 @@
          </h:head> 
     <h:body>
         <ui:include src="Menu2.xhtml"/>
-        <p:fieldset legend="Produtos Cadastrados">
         
-        <h:form>
-            <p:dataTable id="tabela" value="#{ProdutoBean.recuperarTodos()}" var="produto"  paginator="true" rows="10"
-                         rowKey="#{produto.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
+        <h:form id="formulario">
+            <p:dataTable id="tabela" value="#{ProdutoBean.recuperarTodos()}" var="produto" paginator="true" rows="5">
+                    <f:facet name="header">
+                        Produtos Cadastrados
+                    </f:facet>
+                    
                 <p:column headerText="Código">
                     <h:outputText value="#{produto.codigo}" />
                 </p:column>
@@ -29,7 +31,6 @@
             </p:dataTable>  
        
       </h:form>
-  </p:fieldset>
    </h:body>
          
 </html>

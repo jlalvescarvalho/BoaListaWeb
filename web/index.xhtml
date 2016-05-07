@@ -23,10 +23,13 @@
             </p:panelGrid>
            </h:form>
         </p:fieldset>
-        <p:fieldset legend="Produtos"> 
         
         
-            <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto">
+        <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto" paginator="true" 
+                     rows="6" rowKey="#{produto.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
+                <f:facet name="header">
+                    Produtos
+                </f:facet>
                 <p:column headerText="Código">
                     <h:outputText value="#{produto.codigo}" />
                 </p:column>
@@ -34,15 +37,12 @@
                     <h:outputText value="#{produto.nome}" />
                 </p:column>
                 <p:column headerText="Marca">
-                    <h:outputText value="#{MarcaBean.marcas.marca}"/>
+                    <h:outputText value=""/>
                 </p:column>
                 <p:column headerText="Tipo do Produto">
                     <h:outputText value="#{TipoProdutoBean.tipoProduto.nome}"/>
                 </p:column>
             </p:dataTable>  
-       
-      
-  </p:fieldset>
     
     </body>
         </h:head>
