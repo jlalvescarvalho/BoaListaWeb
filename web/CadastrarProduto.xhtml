@@ -12,8 +12,10 @@
          
         <h:form id="formulario"> 
           <p:fieldset legend="Cadastro de Produto">
+              
               <p:commandButton value="Cadastrar Marca" action="CadastrarMarca.xhtml"/>
               <p:commandButton value="Cadastrar Tipo" action="CadastrarTipo.xhtml"/>
+              
                 <p:panelGrid columns="2">
               
                <p:outputLabel for="codigo" value="Codigo:"/>
@@ -22,13 +24,13 @@
                <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
                <p:outputLabel for="marca" value="Marca"/>
                <p:selectOneMenu id="marca" value="#{MarcaBean.marca}" style="width:235px">
-                       <f:selectItem itemLabel="Marcas"/>
-                       <f:selectItems value="#{MarcaBean.marcaSelected}"/>
+                    <f:selectItem itemLabel="Marcas"/>
+                    <f:selectItems value="#{MarcaBean.marcaSelected}"/>
                </p:selectOneMenu>
                <p:outputLabel for="tipo" value="Tipo do produto"/>
                <p:selectOneMenu id="tipo" value="#{TipoProdutoBean.tipoProduto.nome}" style="width: 235px">
-                   <f:selectItem itemLabel="Tipos de Produtos"/>
-                   <f:selectItems value="#{TipoProdutoBean.tipoSelected}"/>
+                    <f:selectItem itemLabel="Tipos de Produtos"/>
+                    <f:selectItems value="#{TipoProdutoBean.tipoSelected}"/>
                </p:selectOneMenu>
                <p:outputLabel for="valor" value="Valor"/>
                <p:inputText id="valor" value="#{TipoProdutoBean.tipoProduto.valor}"/>
