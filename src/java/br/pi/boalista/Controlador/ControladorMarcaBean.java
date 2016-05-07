@@ -20,21 +20,21 @@ public class ControladorMarcaBean implements InterfaceController {
     
     
     private RepositorioMarca repMarca = null;
-    private Marca marca;
+    private Marca marcas;
     private List<SelectItem> MarcaSelected;
     
     public ControladorMarcaBean(){
-        marca = new Marca();
+        marcas = new Marca();
         repMarca = new RepositorioMarca();
         
     }
 
-    public Marca getMarca() {
-        return marca;
+    public Marca getMarcas() {
+        return marcas;
     }
 
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+    public void setMarcas(Marca marca) {
+        this.marcas = marca;
     }
 
     public List<SelectItem> getMarcaSelected() {
@@ -56,12 +56,12 @@ public class ControladorMarcaBean implements InterfaceController {
 
     @Override
     public void inserir() {
-        repMarca.inserir(marca);
+        repMarca.inserir(marcas);
     }
 
     @Override
     public void alterar() {
-     repMarca.alterar(marca);
+     repMarca.alterar(marcas);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ControladorMarcaBean implements InterfaceController {
 
     @Override
     public void excluir() {
-       repMarca.excluir(marca);
+       repMarca.excluir(marcas);
     }
 
     @Override

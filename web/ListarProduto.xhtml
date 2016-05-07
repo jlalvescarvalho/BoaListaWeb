@@ -12,7 +12,8 @@
         <p:fieldset legend="Produtos Cadastrados">
         
         <h:form>
-            <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto">
+            <p:dataTable id="tabela" value="#{ProdutoBean.recuperarTodos()}" var="produto"  paginator="true" rows="10"
+                         rowKey="#{produto.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
                 <p:column headerText="Código">
                     <h:outputText value="#{produto.codigo}" />
                 </p:column>
@@ -20,7 +21,7 @@
                     <h:outputText value="#{produto.nome}" />
                 </p:column>
                 <p:column headerText="Marca">
-                    <h:outputText value="#{MarcaBean.marca.marca}"/>
+                    <h:outputText value="#{produto.marca.marca}"/>
                 </p:column>
                 <p:column headerText="Tipo do Produto">
                     <h:outputText value="#{TipoProdutoBean.tipoProduto.nome}"/>

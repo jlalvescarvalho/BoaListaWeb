@@ -13,8 +13,8 @@
         <h:form id="formulario"> 
           <p:fieldset legend="Cadastro de Produto">
               
-              <p:commandButton value="Cadastrar Marca" action="CadastrarMarca.xhtml"/>
-              <p:commandButton value="Cadastrar Tipo" action="CadastrarTipo.xhtml"/>
+              <p:commandButton value="Cadastrar Marca" action="CadastrarMarca.xhtml" ajax="false"/>
+              <p:commandButton value="Cadastrar Tipo" action="CadastrarTipo.xhtml" ajax="false"/>
               
                 <p:panelGrid columns="2">
               
@@ -23,22 +23,26 @@
                <p:outputLabel for="nome" value="Nome:" /> 
                <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
                <p:outputLabel for="marca" value="Marca"/>
-               <p:selectOneMenu id="marca" value="#{MarcaBean.marca}" style="width:235px">
-                    <f:selectItem itemLabel="Marcas"/>
+               <p:selectOneMenu id="marca" value="#{MarcaBean.marcas.marca}" style="width:235px">
                     <f:selectItems value="#{MarcaBean.marcaSelected}"/>
                </p:selectOneMenu>
                <p:outputLabel for="tipo" value="Tipo do produto"/>
                <p:selectOneMenu id="tipo" value="#{TipoProdutoBean.tipoProduto.nome}" style="width: 235px">
-                    <f:selectItem itemLabel="Tipos de Produtos"/>
                     <f:selectItems value="#{TipoProdutoBean.tipoSelected}"/>
                </p:selectOneMenu>
                <p:outputLabel for="valor" value="Valor"/>
                <p:inputText id="valor" value="#{TipoProdutoBean.tipoProduto.valor}"/>
-               <p:commandButton value="Cadastrar" icon="ui-icon-star" action="#{ProdutoBean.inserir()}">
-                   <f:ajax render="@form" resetValues="true"/>
-               </p:commandButton>
-            </p:panelGrid> 
+            </p:panelGrid>
+               <p:commandButton value="Cadastrar" oncomplete="PF('WidDial').show()"/>
           </p:fieldset>
+            <p:confirmDialog id="idDial" visible="false" message="Cadastrar Produto?" widgetVar="WidDial">
+            <f:facet name="header">
+                Atenção
+            </f:facet>
+            <p:commandButton value="Sim"  icon="ui-icon-star" action="#{ProdutoBean.inserir()}" 
+                             oncomplete="PF('WidDial').hide()" update="formulario" />
+            <p:commandButton value="Não" oncomplete="PF('WidDial').hide()"/>
+            </p:confirmDialog>
         </h:form>
     </h:body>
 </html>

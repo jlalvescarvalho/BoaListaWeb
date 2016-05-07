@@ -33,6 +33,7 @@ public class Produto implements Serializable {
         
        
     }
+    @Deprecated
      public Produto() {
     }
  
@@ -59,6 +60,22 @@ public class Produto implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 
    

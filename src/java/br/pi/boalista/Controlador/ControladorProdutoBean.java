@@ -12,10 +12,12 @@ import javax.faces.bean.SessionScoped;
 import javax.swing.JOptionPane;
 
 @ManagedBean(name="ProdutoBean")
+@SessionScoped
 public class ControladorProdutoBean implements InterfaceController{
     
     private RepositorioProduto repProduto = null;
     private Produto produto;
+    private Produto produtoSeleted;
     
 
 
@@ -33,6 +35,23 @@ public class ControladorProdutoBean implements InterfaceController{
         this.produto = produto;
     }
 
+    public RepositorioProduto getRepProduto() {
+        return repProduto;
+    }
+
+    public void setRepProduto(RepositorioProduto repProduto) {
+        this.repProduto = repProduto;
+    }
+
+    public Produto getProdutoSeleted() {
+        return produtoSeleted;
+    }
+
+    public void setProdutoSeleted(Produto produtoSeleted) {
+        this.produtoSeleted = produtoSeleted;
+    }
+
+    
     @Override
     public void inserir() {
         repProduto.inserir(produto);
