@@ -14,11 +14,10 @@ public class Marca implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-    
     private String marca;
     
     @OneToMany
-    private List<Produto> listaProdutos;
+    private List<Produto> ProdutosMarca;
     
     public Marca(String marca) {
         this.marca = marca;
@@ -46,6 +45,14 @@ public class Marca implements Serializable {
         this.id = id;
     }
 
+    public List<Produto> getProdutosMarca() {
+        return ProdutosMarca;
+    }
 
+    public void setProdutosMarca(List<Produto> ProdutosMarca) {
+        this.ProdutosMarca = ProdutosMarca;
+    }
+
+    
     
 }

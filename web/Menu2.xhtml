@@ -12,30 +12,21 @@
         
     
     <h:body>
-        <h:form>
-            
-            <p:growl id="messages"/>
-            
+        <h:form id="formulario">            
             <p:menubar>
                 <p:submenu label="Cadastro" icon="ui-icon-document">
                    <p:menuitem value="Produto" url="CadastrarProduto.xhtml" />
-                <p:menuitem value="Usuario" url="CadastrarUsuario.xhtml" /> 
-                    
+                <p:menuitem value="Usuario" url="CadastrarUsuario.xhtml" />    
                 </p:submenu> 
                 
                 <p:submenu label="Editar" icon="ui-icon-pencil">
-                        
                          <p:menuitem value="Produto" url="" icon="ui-icon-arrowreturnthick-1-w" />
                         <p:menuitem value="Usuario" url="" icon="ui-icon-arrowreturnthick-1-e" />
-                        
                      </p:submenu>
                 
                 <p:submenu label="Listar" icon="ui-icon-gear">
-                    
                     <p:menuitem value="Produtos" url="ListarProduto.xhtml" icon="ui-icon-arrowreturnthick-1-w" />
                         <p:menuitem value="Usuarios" url="ListarUsuario.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
-                        
-                                         
                 </p:submenu>
                <p:menuitem value="Sair" url="index.xhtml" icon="ui-icon-close" />
                 

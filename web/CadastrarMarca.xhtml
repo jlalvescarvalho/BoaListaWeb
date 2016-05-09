@@ -9,22 +9,24 @@
     <h:body>
         <ui:include src="Menu2.xhtml"/>
         <h:link value="Voltar" outcome="CadastrarProduto.xhtml"/>
-        <h:form id="formulario">
+        
+        <h:form id="FormularioMarca">
             <p:fieldset legend="Cadastro de Marca">
+                
             <p:panelGrid columns="2">
                 <p:outputLabel for="marca" value="Marca"/>
                 <p:inputText id="marca" value="#{MarcaBean.marcas.marca}"/>
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar" oncomplete="PF('WidDial').show()" />
             </p:fieldset>
+            
             <p:confirmDialog id="idDial" visible="false" message="Deseja realmente cadastrar essa marca?" widgetVar="WidDial">
                 <f:facet name="header">
                     Atenção 
                 </f:facet>
                 <p:commandButton value="Sim" icon="ui-icon-star" action="#{MarcaBean.inserir()}" 
-                                 oncomplete="PF('WidDial').hide()" update="formulario"/>
-                <p:commandButton value="Não" oncomplete="PF('WidDial').hide()"/>
-                
+                                 oncomplete="PF('WidDial').hide()" update="FormularioMarca"/>
+                <p:commandButton value="Não" oncomplete="PF('WidDial').hide()"/>   
             </p:confirmDialog>
         </h:form>
     </h:body>

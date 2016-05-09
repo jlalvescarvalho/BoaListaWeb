@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -17,14 +18,14 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-    @Column
-    private int codigo;
+    @Column(length = 20, unique = true)
+    private long codigo;
     @Column
     private String nome;
    
-    @OneToOne
+    @ManyToOne
     private TipoProduto tipoProduto;
-    @OneToOne
+    @ManyToOne
     private Marca marca;
  
     public Produto(int codigo, String nome) {
@@ -38,11 +39,11 @@ public class Produto implements Serializable {
     }
  
 
-    public int getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 

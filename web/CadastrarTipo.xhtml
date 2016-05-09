@@ -12,7 +12,7 @@
         <ui:include src="Menu2.xhtml"/>
         <h:link value="Voltar" outcome="CadastrarProduto.xhtml"/>
         
-        <h:form id="formulario">
+        <h:form id="FormularioTipo">
             <p:fieldset legend="Cadastrar Tipo">
             <p:panelGrid columns="2">
                 <p:outputLabel for="marca" value="Marca"/>
@@ -25,7 +25,7 @@
                     Atenção
                 </f:facet>
                 <p:commandButton value="Sim" icon="ui-icon-star" action="#{TipoProdutoBean.inserir()}" 
-                                 oncomplete="PF('WidDial').hide()" update="formulario"/>
+                                 oncomplete="PF('WidDial').hide()" update="FormularioTipo"/>
                 <p:commandButton value="Não" oncomplete="PF('WidDial').hide()"/>
             </p:confirmDialog>
         </h:form>

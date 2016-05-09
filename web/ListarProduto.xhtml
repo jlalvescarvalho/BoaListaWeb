@@ -10,7 +10,7 @@
     <h:body>
         <ui:include src="Menu2.xhtml"/>
         
-        <h:form id="formulario">
+        <h:form id="FormularioListar">
             <p:dataTable id="tabela" value="#{ProdutoBean.recuperarTodos()}" var="produto" paginator="true" rows="5">
                     <f:facet name="header">
                         Produtos Cadastrados

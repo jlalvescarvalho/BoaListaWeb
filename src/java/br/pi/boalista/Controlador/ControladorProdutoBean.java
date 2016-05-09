@@ -1,6 +1,7 @@
 package br.pi.boalista.Controlador;
 
 import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.Marca;
 import br.pi.boalista.Modelo.Produto;
 import br.pi.boalista.Modelo.Repositorio.RepositorioProduto;
 import java.io.Serializable;
@@ -51,10 +52,14 @@ public class ControladorProdutoBean implements InterfaceController{
         this.produtoSeleted = produtoSeleted;
     }
 
+    public List<Marca> reculperarmarcas(){
+        return DaoManagerHiber.getInstance().recoverAll("from marca");
+    }
     
     @Override
     public void inserir() {
         repProduto.inserir(produto);
+        
     }
 
     @Override
@@ -73,7 +78,7 @@ public class ControladorProdutoBean implements InterfaceController{
     }
 
     @Override
-    public Object recuperar(Long id) {
+    public Produto recuperar(Long id) {
         return repProduto.recuperar(id);
     }
 }

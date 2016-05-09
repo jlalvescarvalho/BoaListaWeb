@@ -10,7 +10,8 @@
     <h:body>
         <ui:include src="Menu2.xhtml"/>
          
-        <h:form id="formulario"> 
+        <h:form id="form"> 
+            <a href="CadastrarProduto.xhtml"></a>
           <p:fieldset legend="Cadastro de Produto">
               
               <p:commandButton value="Cadastrar Marca" action="CadastrarMarca.xhtml" ajax="false"/>
@@ -40,7 +41,7 @@
                 Atenção
             </f:facet>
             <p:commandButton value="Sim"  icon="ui-icon-star" action="#{ProdutoBean.inserir()}" 
-                             oncomplete="PF('WidDial').hide()" update="formulario" />
+                             oncomplete="PF('WidDial').hide()" update="form" />
             <p:commandButton value="Não" oncomplete="PF('WidDial').hide()"/>
             </p:confirmDialog>
         </h:form>

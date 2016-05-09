@@ -26,7 +26,7 @@ public class TipoProduto implements Serializable {
     private double valor;
     
     @OneToMany
-    private List<Produto> produtos;
+    private List<Produto> produtosTipo;
     
 
     public TipoProduto(String nome, double valor) {
@@ -63,6 +63,14 @@ public class TipoProduto implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Produto> getProdutosTipo() {
+        return produtosTipo;
+    }
+
+    public void setProdutosTipo(List<Produto> produtosTipo) {
+        this.produtosTipo = produtosTipo;
     }
     
     

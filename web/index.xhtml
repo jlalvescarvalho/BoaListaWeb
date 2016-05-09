@@ -7,44 +7,28 @@
     
     <h:head>
         <title>Inicio</title>
-    <body>
-        <p:fieldset legend="Login">
-              <h:form>
-                  
-        <p:panelGrid columns="2" >
-      
-                <p:outputLabel for="login" value="Email:"/>
-                <p:inputText id="login" value=""/>
-                <p:outputLabel for="senha" value="Senha:"/>
-                <p:password id="senha" value=""/>
-               
-                <h:link value="Entrar" outcome="Menu2.xhtml"/>
-                
-            </p:panelGrid>
-           </h:form>
-        </p:fieldset>
-        
-        
-        <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto" paginator="true" 
-                     rows="6" rowKey="#{produto.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
+    <h:body>
+            
+            <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="prod" paginator="true" 
+                     rows="10" rowKey="#{prod.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
                 <f:facet name="header">
-                    Produtos
+                    Produtos 
+                    <h:link value="Entrar" outcome="Menu2.xhtml"/>
                 </f:facet>
                 <p:column headerText="Código">
-                    <h:outputText value="#{produto.codigo}" />
+                    <h:outputText value="#{prod.codigo}" />
                 </p:column>
-                <p:column headerText="Nome">
-                    <h:outputText value="#{produto.nome}" />
+            <p:column headerText="Nome">
+                    <h:outputText value="#{prod.nome}"/>
                 </p:column>
                 <p:column headerText="Marca">
-                    <h:outputText value=""/>
+                    <h:outputText value="#{prod.marca}"/>
                 </p:column>
                 <p:column headerText="Tipo do Produto">
                     <h:outputText value="#{TipoProdutoBean.tipoProduto.nome}"/>
                 </p:column>
             </p:dataTable>  
-    
-    </body>
+    </h:body>
         </h:head>
 </html>
 
