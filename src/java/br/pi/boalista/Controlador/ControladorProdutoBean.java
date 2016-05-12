@@ -3,7 +3,10 @@ package br.pi.boalista.Controlador;
 import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Marca;
 import br.pi.boalista.Modelo.Produto;
+import br.pi.boalista.Modelo.Repositorio.RepositorioMarca;
 import br.pi.boalista.Modelo.Repositorio.RepositorioProduto;
+import br.pi.boalista.Modelo.Repositorio.RepositorioTipoProduto;
+import br.pi.boalista.Modelo.TipoProduto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +20,11 @@ import javax.swing.JOptionPane;
 public class ControladorProdutoBean implements InterfaceController{
     
     private RepositorioProduto repProduto = null;
+    private RepositorioMarca repMarca = null;
+    private RepositorioTipoProduto repTipo = null;
     private Produto produto;
+    private Marca marca;
+    private TipoProduto tipo;
     private Produto produtoSeleted;
     
 
@@ -26,6 +33,10 @@ public class ControladorProdutoBean implements InterfaceController{
     public ControladorProdutoBean(){
         produto = new Produto();
         repProduto = new RepositorioProduto();
+        repMarca = new RepositorioMarca();
+        repTipo = new RepositorioTipoProduto();
+        tipo = new TipoProduto();
+        marca = new Marca();
     }
 
     public Produto getProduto() {
@@ -52,13 +63,31 @@ public class ControladorProdutoBean implements InterfaceController{
         this.produtoSeleted = produtoSeleted;
     }
 
-    public List<Marca> reculperarmarcas(){
-        return DaoManagerHiber.getInstance().recoverAll("from marca");
+    public Marca getMarca() {
+        return marca;
     }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public TipoProduto getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoProduto tipo) {
+        this.tipo = tipo;
+    }
+    
     
     @Override
     public void inserir() {
+        marca = repMarca.recuperar(marca.getId());
+        tipo = repTipo.recuperar(tipo.getId());
+        produto.setMarca(marca);
+        produto.setTipoProduto(tipo);
         repProduto.inserir(produto);
+        
         
     }
 
@@ -70,6 +99,7 @@ public class ControladorProdutoBean implements InterfaceController{
     @Override
     public List<Produto> recuperarTodos() {
         return repProduto.recuperarTodos();
+        
     }
 
     @Override

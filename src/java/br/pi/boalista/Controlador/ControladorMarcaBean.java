@@ -44,7 +44,7 @@ public class ControladorMarcaBean implements InterfaceController {
            if(!ListaMarcas.isEmpty()){
                SelectItem item;
                for (int i=0; i<ListaMarcas.size(); i++) {
-                   item = new SelectItem(ListaMarcas.get(i).getMarca());
+                   item = new SelectItem(ListaMarcas.get(i).getNome());
                    MarcaSelected.add(item);
                }
            

@@ -20,15 +20,11 @@ public class TipoProduto implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-    @Column
+    @Column(name = "Nome", nullable = false)
     private String nome;
     @Column
     private double valor;
-    
-    @OneToMany
-    private List<Produto> produtosTipo;
-    
-
+   
     public TipoProduto(String nome, double valor) {
         this.nome = nome;
         this.valor = valor;
@@ -64,15 +60,6 @@ public class TipoProduto implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public List<Produto> getProdutosTipo() {
-        return produtosTipo;
-    }
-
-    public void setProdutosTipo(List<Produto> produtosTipo) {
-        this.produtosTipo = produtosTipo;
-    }
-    
-    
-   
+  
+  
 }

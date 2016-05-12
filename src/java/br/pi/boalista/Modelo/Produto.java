@@ -23,14 +23,15 @@ public class Produto implements Serializable {
     @Column
     private String nome;
    
-    @ManyToOne
+    @OneToOne
     private TipoProduto tipoProduto;
-    @ManyToOne
+    @OneToOne
     private Marca marca;
  
-    public Produto(int codigo, String nome) {
+    public Produto(int codigo, String nome, long id) {
         this.codigo = codigo;
         this.nome = nome;
+        this.id = id;
         
        
     }

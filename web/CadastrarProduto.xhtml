@@ -11,6 +11,7 @@
         <ui:include src="Menu2.xhtml"/>
          
         <h:form id="form"> 
+            <p:messages/>
             <a href="CadastrarProduto.xhtml"></a>
           <p:fieldset legend="Cadastro de Produto">
               
@@ -24,12 +25,14 @@
                <p:outputLabel for="nome" value="Nome:" /> 
                <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
                <p:outputLabel for="marca" value="Marca"/>
-               <p:selectOneMenu id="marca" value="#{MarcaBean.marcas.marca}" style="width:235px">
-                    <f:selectItems value="#{MarcaBean.marcaSelected}"/>
+               <p:selectOneMenu id="marca" value="#{ProdutoBean.marca.id}" style="width:235px">
+                   <f:selectItems value="#{MarcaBean.recuperarTodos()}" var="item" itemValue="#{item.id}" 
+                                  itemLabel="#{item.nome}" />
                </p:selectOneMenu>
                <p:outputLabel for="tipo" value="Tipo do produto"/>
-               <p:selectOneMenu id="tipo" value="#{TipoProdutoBean.tipoProduto.nome}" style="width: 235px">
-                    <f:selectItems value="#{TipoProdutoBean.tipoSelected}"/>
+               <p:selectOneMenu id="tipo" value="#{ProdutoBean.tipo.id}" style="width: 235px">
+                   <f:selectItems value="#{TipoProdutoBean.recuperarTodos()}" var="itemtipo" 
+                                  itemValue="#{itemtipo.id}" itemLabel="#{itemtipo.nome}"/>
                </p:selectOneMenu>
                <p:outputLabel for="valor" value="Valor"/>
                <p:inputText id="valor" value="#{TipoProdutoBean.tipoProduto.valor}"/>
@@ -41,7 +44,7 @@
                 Atenção
             </f:facet>
             <p:commandButton value="Sim"  icon="ui-icon-star" action="#{ProdutoBean.inserir()}" 
-                             oncomplete="PF('WidDial').hide()" update="form" />
+                             oncomplete="PF('WidDial').hide()" update="form"/>
             <p:commandButton value="Não" oncomplete="PF('WidDial').hide()"/>
             </p:confirmDialog>
         </h:form>
