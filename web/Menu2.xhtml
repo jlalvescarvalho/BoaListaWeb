@@ -34,6 +34,28 @@
             
         </h:form>
         
+        <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto" paginator="true" 
+                     rows="10" rowKey="#{produto.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
+                <f:facet name="header">
+                    Produtos 
+                    <h:link value="Entrar" outcome="Menu2.xhtml"/>
+                </f:facet>
+                <p:column headerText="Código">
+                    <h:outputText value="#{produto.codigo}" />
+                </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{produto.nome}"/>
+                </p:column>
+                <p:column headerText="Marca">
+                    <h:outputText value="#{produto.marca.nome}"/>
+                </p:column>
+                <p:column headerText="Tipo do Produto">
+                    <h:outputText value="#{produto.tipoProduto.nome}"/>
+                </p:column>
+            </p:dataTable>
+        <p:commandButton value="Alterar" action="AlterarProduto.xhtml"/>
+        <p:commandButton value="Excluir" action="ExcluirItem.xhtml"/>
+       
         
     </h:body>
      </h:head>
