@@ -14,7 +14,7 @@ import java.util.List;
 public interface InterfaceController {
     
     public void inserir();
-    public void alterar();
+    public String alterar();
     public List recuperarTodos();
     public void excluir();
     public Object recuperar(Long id);

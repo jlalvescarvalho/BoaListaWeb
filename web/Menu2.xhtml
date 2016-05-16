@@ -34,28 +34,61 @@
             
         </h:form>
         
-        <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="produto" paginator="true" 
-                     rows="10" rowKey="#{produto.codigo}" selectionMode="single" selection="#{ProdutoBean.produtoSeleted}">
+        <h:form id="formostrar">
+        <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="item" paginator="true" 
+                     rows="10" rowKey="#{item.codigo}" selectionMode="single" selection="#{ProdutoBean.produto}">
                 <f:facet name="header">
                     Produtos 
-                    <h:link value="Entrar" outcome="Menu2.xhtml"/>
                 </f:facet>
                 <p:column headerText="Código">
-                    <h:outputText value="#{produto.codigo}" />
+                    <h:outputText value="#{item.codigo}" />
                 </p:column>
-            <p:column headerText="Nome">
-                <h:outputText value="#{produto.nome}"/>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{item.nome}"/>
                 </p:column>
                 <p:column headerText="Marca">
-                    <h:outputText value="#{produto.marca.nome}"/>
+                    <h:outputText value="#{item.marca.nome}"/>
                 </p:column>
                 <p:column headerText="Tipo do Produto">
-                    <h:outputText value="#{produto.tipoProduto.nome}"/>
+                    <h:outputText value="#{item.tipoProduto.nome}"/>
+                </p:column>
+                <p:column headerText="Valor">
+                    <h:outputText value="#{item.tipoProduto.valor}"/>
                 </p:column>
             </p:dataTable>
+            <p:commandButton value="Visualizar" oncomplete="PF('WidDial').show()" update="idDial"/>
+        <p:commandButton value="Excluir" action="#{ProdutoBean.excluir()}" update="formostrar"/>
         <p:commandButton value="Alterar" action="AlterarProduto.xhtml"/>
-        <p:commandButton value="Excluir" action="ExcluirItem.xhtml"/>
-       
+        
+        <p:dialog id="idDial" visible="false" resizable="false" modal="true" widgetVar="WidDial">
+               <p:panelGrid columns="2">
+              
+               <p:outputLabel for="codigo" value="Codigo:"/>
+               <p:inputText id="codigo" value="#{ProdutoBean.produto.codigo}"/>
+               
+               <p:outputLabel for="nome" value="Nome:" /> 
+               <p:inputText id="nome" value="#{ProdutoBean.produto.nome}" />
+               
+               <p:outputLabel for="marca" value="Marca"/>
+               <p:selectOneMenu id="marca" value="#{ProdutoBean.marca.id}" style="width:235px">
+                <f:selectItems value="#{MarcaBean.recuperarTodos()}" var="item" itemValue="#{item.id}" 
+                                  itemLabel="#{item.nome}" />
+               </p:selectOneMenu>
+               
+               <p:outputLabel for="tipo" value="Tipo do produto"/>
+               <p:selectOneMenu id="tipo" value="#{ProdutoBean.tipo.id}" style="width: 235px">
+                <f:selectItems value="#{TipoProdutoBean.recuperarTodos()}" var="itemtipo" 
+                                  itemValue="#{itemtipo.id}" itemLabel="#{itemtipo.nome}"/>
+               </p:selectOneMenu>
+               
+               <p:outputLabel for="valor" value="Valor"/>
+               <p:inputText id="valor" value="#{ProdutoBean.tipo.valor}"/>
+               
+            </p:panelGrid>
+              
+               <p:commandButton value="OK" oncomplete="PF('WidDial').hide()"/>
+        </p:dialog>
+      </h:form>
         
     </h:body>
      </h:head>

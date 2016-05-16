@@ -60,8 +60,9 @@ public class ControladorMarcaBean implements InterfaceController {
     }
 
     @Override
-    public void alterar() {
+    public String alterar() {
      repMarca.alterar(marcas);
+     return "Menu2.xhtml";
     }
 
     @Override

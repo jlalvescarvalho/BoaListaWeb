@@ -45,8 +45,9 @@ public class ControladorUsuarioBean implements InterfaceController{
     }
 
     @Override
-    public void alterar() {
+    public String alterar() {
         repUsuario.alterar(usuario);
+        return "Menu2.xhtml";
     }
 
     @Override

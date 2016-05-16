@@ -25,9 +25,8 @@ public class ControladorProdutoBean implements InterfaceController{
     private Produto produto;
     private Marca marca;
     private TipoProduto tipo;
-    private Produto produtoSeleted;
     
-
+    
 
 
     public ControladorProdutoBean(){
@@ -53,14 +52,6 @@ public class ControladorProdutoBean implements InterfaceController{
 
     public void setRepProduto(RepositorioProduto repProduto) {
         this.repProduto = repProduto;
-    }
-
-    public Produto getProdutoSeleted() {
-        return produtoSeleted;
-    }
-
-    public void setProdutoSeleted(Produto produtoSeleted) {
-        this.produtoSeleted = produtoSeleted;
     }
 
     public Marca getMarca() {
@@ -92,8 +83,10 @@ public class ControladorProdutoBean implements InterfaceController{
     }
 
     @Override
-    public void alterar() {
+    public String alterar() {
         repProduto.alterar(produto);
+        
+        return "Menu2.xhtml";
     }
 
     @Override
