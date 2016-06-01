@@ -15,5 +15,6 @@
     <mapping class="br.pi.boalista.Modelo.Produto"/>
     <mapping class="br.pi.boalista.Modelo.TipoProduto"/>
     <mapping class="br.pi.boalista.Modelo.Usuario"/>
+    <mapping class="br.pi.boalista.Modelo.Mercado"/>
   </session-factory>
 </hibernate-configuration>

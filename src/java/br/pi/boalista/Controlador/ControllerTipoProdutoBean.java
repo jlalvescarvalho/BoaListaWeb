@@ -63,9 +63,8 @@ public class ControllerTipoProdutoBean implements InterfaceController{
     }
 
     @Override
-    public String alterar() {
+    public void alterar() {
         repTipoProduto.alterar(tipoProduto);
-        return "Menu2.xhtml";
     }
 
     @Override

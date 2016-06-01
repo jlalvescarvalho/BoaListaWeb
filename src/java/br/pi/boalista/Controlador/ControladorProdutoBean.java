@@ -13,7 +13,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.swing.JOptionPane;
 
 @ManagedBean(name="ProdutoBean")
 @SessionScoped
@@ -83,10 +82,9 @@ public class ControladorProdutoBean implements InterfaceController{
     }
 
     @Override
-    public String alterar() {
+    public void alterar() {
         repProduto.alterar(produto);
         
-        return "Menu2.xhtml";
     }
 
     @Override

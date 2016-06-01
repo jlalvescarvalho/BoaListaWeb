@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Mercados</title>
+    </h:head>
+    <h:body>
+        <ui:include src="Menu2.xhtml"/>
+        <p:commandButton value="Cadastrar" oncomplete="PF('WidCadastrar').show()"/>
+        <h:form id="formMercado">
+            <p:dataTable id="tabelaMercado" value="#{MercadoBean.recuperarTodos()}" var="item" paginator="true" rows="6"
+                         rowKey="#{item.cpf_cnpj}" selectionMode="single">
+                <f:facet name="header">Mercados</f:facet>
+
+                <p:column headerText="Cpf_Cnpj">
+                    <h:outputText value="#{item.cpf_cnpj}"/>
+                </p:column>
+                <p:column headerText="Razão Social">
+                    <h:outputText value="#{item.razao}"/>
+                </p:column>
+                <p:column headerText="Nome Fantasia">
+                    <h:outputText value="#{item.nome_fantasia}"/>
+                </p:column>
+                <p:column headerText="Telefone">
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+                <p:column headerText="Opções">
+                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('WidApagar').show()">
+                        <f:setPropertyActionListener target="#{MercadoBean.mercado}" value="#{item}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('WidDial').show()" update=":idDial">
+                        <f:setPropertyActionListener target="#{MercadoBean.mercado}" value="#{item}"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+
+            <p:confirmDialog id="dialApagar" visible="false" message="Deseja realmente excluir esse Mercado" widgetVar="WidApagar">
+                <p:commandButton value="Sim" action="#{MercadoBean.excluir()}" oncomplete="PF('WidDial').hide()" update="formMercado"/>
+                <p:commandButton value="Não" oncomplete="PF('WidApagar').hide()"/>
+            </p:confirmDialog>
+
+        </h:form>
+        <p:dialog id="idDial" visible="false" resizable="false" modal="true" widgetVar="WidDial">
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel for="Cpf_Cnpj" value="Cpf_Cnpj:"/>
+                    <h:outputText id="Cpf_Cnpj" value="#{MercadoBean.mercado.cpf_cnpj}"/>
+
+                    <p:outputLabel for="razao" value="Razão:" /> 
+                    <h:inputText id="razao" value="#{MercadoBean.mercado.razao}" />
+
+                    <p:outputLabel for="fantasia" value="Nome Fantasia:"/>
+                    <h:inputText id="fantasia" value="#{MercadoBean.mercado.nome_fantasia}"/>
+
+                    <p:outputLabel for="telefone" value="Telefone"/>
+                    <h:inputText id="telefone" value="#{MercadoBean.mercado.telefone}"/>
+
+                    <p:commandButton value="Alterar" action="#{MercadoBean.alterar()}" oncomplete="PF('WidDial').hide()" update=":formMercado"/>
+                    <p:commandButton value="Cancelar" oncomplete="PF('WidDial').hide()"/>
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+        
+        <p:dialog id="dialCadastra" resizable="false" visible="false" modal="true" widgetVar="WidCadastrar">
+                <h:form>
+                <p:panelGrid columns="2">
+                    
+                    <h:outputText value="Cpf_Cnpj:"/>
+                    <p:inputText value="#{MercadoBean.mercado.cpf_cnpj}"/>
+ 
+                    <h:outputText value="Razão:"/>
+                    <p:inputText value="#{MercadoBean.mercado.razao}"/>
+                    
+                    <h:outputText value="Nome Fantasia:"/>
+                    <p:inputText value="#{MercadoBean.mercado.nome_fantasia}"/>
+                    
+                    <h:outputText value="Telefone:"/>
+                    <p:inputText value="#{MercadoBean.mercado.telefone}"/>
+                   
+
+                </p:panelGrid>
+                    <p:commandButton value="cadastrar" action="#{MercadoBean.inserir()}"
+                                     oncomplete="location.href='ListarMercado.xhtml'" update=":formMercado"/>
+                    <p:commandButton value="Cancelar" oncomplete="PF('WidCadastrar').hide()"/>
+                </h:form>
+            </p:dialog>
+    </h:body>
+</html>
+

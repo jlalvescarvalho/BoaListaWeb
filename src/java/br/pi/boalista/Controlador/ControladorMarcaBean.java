@@ -13,6 +13,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
+import javax.swing.text.Document;
 
 @ManagedBean(name = "MarcaBean")
 @RequestScoped
@@ -60,9 +61,8 @@ public class ControladorMarcaBean implements InterfaceController {
     }
 
     @Override
-    public String alterar() {
+    public void alterar() {
      repMarca.alterar(marcas);
-     return "Menu2.xhtml";
     }
 
     @Override
