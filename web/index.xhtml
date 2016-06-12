@@ -11,14 +11,13 @@
             
             <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="p" paginator="true" 
                          rows="10" rowKey="#{p.codigo}" selectionMode="single" selection="#{ProdutoBean.produto}">
-                <f:facet name="header">
-                    Produtos 
+                <f:facet name="header">Produtos
                     <h:link value="Entrar" outcome="Menu2.xhtml"/>
                 </f:facet>
                 <p:column headerText="Código">
                     <h:outputText value="#{p.codigo}" />
                 </p:column>
-            <p:column headerText="Nome">
+                <p:column headerText="Nome">
                 <h:outputText value="#{p.nome}"/>
                 </p:column>
                 <p:column headerText="Marca">
