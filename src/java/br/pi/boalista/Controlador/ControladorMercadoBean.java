@@ -11,6 +11,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+
 /**
  *
  * @author Kleriston
@@ -41,7 +42,12 @@ public class ControladorMercadoBean implements InterfaceController{
     
     @Override
     public void inserir() {
+        try{
         repMercado.inserir(mercado);
+        }catch(Exception error){
+            new Exception();
+        }
+        mercado = new Mercado();
     }
 
     @Override
