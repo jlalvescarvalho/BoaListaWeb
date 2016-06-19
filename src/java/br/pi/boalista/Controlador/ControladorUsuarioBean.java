@@ -59,10 +59,13 @@ public class ControladorUsuarioBean implements InterfaceController{
     public void excluir() {
         repUsuario.excluir(usuario);
     }
-
     @Override
-    public Usuario recuperar(Long id) {
-         return repUsuario.recuperar(id);
+    public Usuario recuperar(Long id){
+        return null;
+    }
+    
+    public Usuario recuperar(String login, String senha) {
+         return repUsuario.recuperarUser(login, senha);
                  
     }
 }    

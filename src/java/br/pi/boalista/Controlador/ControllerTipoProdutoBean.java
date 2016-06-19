@@ -5,7 +5,7 @@
  */
 package br.pi.boalista.Controlador;
 
-import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Repositorio.RepositorioTipoProduto;
 import br.pi.boalista.Modelo.TipoProduto;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class ControllerTipoProdutoBean implements InterfaceController{
     public List<SelectItem> getTipoSelected() {
         tipoSelected = new ArrayList<SelectItem>();
         
-        List<TipoProduto> listaTipo = DaoManagerHiber.getInstance().recoverAll("from tipoproduto");
+        List<TipoProduto> listaTipo = DaoManagerHiber.getInstance().recover("from tipoproduto");
         if(!listaTipo.isEmpty()){
             SelectItem item;
             

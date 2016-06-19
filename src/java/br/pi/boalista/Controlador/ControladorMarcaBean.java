@@ -5,9 +5,10 @@
  */
 package br.pi.boalista.Controlador;
 
-import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+
 import br.pi.boalista.Modelo.Marca;
 import br.pi.boalista.Modelo.Repositorio.RepositorioMarca;
+import br.pi.boalista.Modelo.dao.DaoManagerHiber;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -40,7 +41,7 @@ public class ControladorMarcaBean implements InterfaceController {
 
     public List<SelectItem> getMarcaSelected() {
         MarcaSelected = new ArrayList<SelectItem>();
-           List<Marca> ListaMarcas = DaoManagerHiber.getInstance().recoverAll("from marca");
+           List<Marca> ListaMarcas = DaoManagerHiber.getInstance().recover("from marca");
            
            if(!ListaMarcas.isEmpty()){
                SelectItem item;

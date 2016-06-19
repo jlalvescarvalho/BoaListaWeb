@@ -1,6 +1,6 @@
 package br.pi.boalista.Controlador;
 
-import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+
 import br.pi.boalista.Modelo.Marca;
 import br.pi.boalista.Modelo.Produto;
 import br.pi.boalista.Modelo.Repositorio.RepositorioMarca;

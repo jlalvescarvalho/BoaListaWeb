@@ -1,7 +1,7 @@
 package br.pi.boalista.Modelo.Repositorio;
 
 
-import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Produto;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class RepositorioProduto implements RepositorioGenerico<Produto, Long>{
 
     @Override
     public Produto recuperar(Long id) {
-        return (Produto) DaoManagerHiber.getInstance().recover(Produto.class, id);
+        return (Produto) DaoManagerHiber.getInstance().recover(id);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class RepositorioProduto implements RepositorioGenerico<Produto, Long>{
 
     @Override
     public List<Produto> recuperarTodos() {
-        return DaoManagerHiber.getInstance().recoverAll("from produto");
+        return DaoManagerHiber.getInstance().recover("from produto");
     }
 
    

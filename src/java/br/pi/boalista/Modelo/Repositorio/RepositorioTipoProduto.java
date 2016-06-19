@@ -6,7 +6,7 @@
 package br.pi.boalista.Modelo.Repositorio;
 
 
-import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.TipoProduto;
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class RepositorioTipoProduto implements RepositorioGenerico<TipoProduto, 
 
     @Override
     public TipoProduto recuperar(Long id) {
-        return (TipoProduto)DaoManagerHiber.getInstance().recover(TipoProduto.class, id);
+        return (TipoProduto)DaoManagerHiber.getInstance().recover(id);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class RepositorioTipoProduto implements RepositorioGenerico<TipoProduto, 
 
     @Override
     public List<TipoProduto> recuperarTodos() {
-        return DaoManagerHiber.getInstance().recoverAll("from tipoproduto");
+        return DaoManagerHiber.getInstance().recover("from tipoproduto");
     }
     
 }

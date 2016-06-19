@@ -6,7 +6,7 @@
 package br.pi.boalista.Modelo.Repositorio;
 
 
-import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Marca;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class RepositorioMarca implements RepositorioGenerico<Marca, Long> {
 
     @Override
     public List recuperarTodos() {
-        return DaoManagerHiber.getInstance().recoverAll("from marca");
+        return DaoManagerHiber.getInstance().recover("from marca");
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RepositorioMarca implements RepositorioGenerico<Marca, Long> {
 
     @Override
     public Marca recuperar(Long id) {
-        return (Marca)DaoManagerHiber.getInstance().recover(Marca.class, id);
+        return (Marca)DaoManagerHiber.getInstance().recover(id);
     }
 
     @Override
