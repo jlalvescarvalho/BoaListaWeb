@@ -1,10 +1,6 @@
-package br.pi.boalista.Modelo.dao;
+package br.pi.boalista.Modelo.Dao;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -71,7 +67,11 @@ public class DaoManagerHiber {
     public List recover(String hql){
         Transaction tr = null;
         
+        try{
         s.close();
+        }catch(org.hibernate.SessionException sess){
+            
+        }
         
          s = sessionFactory.openSession();
          

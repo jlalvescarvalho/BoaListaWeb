@@ -35,7 +35,7 @@ public class ControladorUsuarioBean implements InterfaceController{
         return usuario;
     }
 
-    public void setUsuario() {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

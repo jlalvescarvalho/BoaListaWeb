@@ -5,7 +5,7 @@
  */
 package br.pi.boalista.Controlador;
 
-import br.pi.boalista.Modelo.dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Repositorio.RepositorioTipoProduto;
 import br.pi.boalista.Modelo.TipoProduto;
 import java.util.ArrayList;

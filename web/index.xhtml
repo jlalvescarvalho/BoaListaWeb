@@ -10,14 +10,13 @@
         <h:body>
             <h:form id="formulario">
                 <p:growl id="gro" showDetail="true" life="3000" sticky="false"/>
+
                 <p:fieldset legend="Logar!">
                     <p:panelGrid columns="2">
                         <p:commandButton value="Entrar" oncomplete="PF('widDial2').show()"/>
                         <p:commandButton value="Cadastrar" oncomplete="PF('widCadastro').show()"/>
-
                     </p:panelGrid>
                 </p:fieldset>
-
 
                 <p:dialog id="dial2"  visible="false" resizable="false" modal="true" widgetVar="widDial2">
                     <f:facet name="header">Atenção!!!</f:facet>
@@ -27,35 +26,35 @@
 
                         <h:outputText value="Senha"/>
                         <p:inputText type="password" value="#{senha}"/>
-
                     </p:panelGrid>
 
-                    <p:commandButton value="Entrar" action="#{LoginBean.logarFuncionario(login, senha)}"
-                                     update="formulario"/>
-                    <p:commandButton value="Cancelar" update="formulario"/>
-
-
+                    <p:commandButton value="Entrar" action="#{LoginBean.realizarLogin(login, senha)}" update="gro"/>
+                    <p:commandButton value="Cancelar" oncomplete="PF('widDial2').hide()"/>
                 </p:dialog>
-                
+
                 <p:dialog id="dialCadastro" resizable="false" visible="false" modal="true" widgetVar="widCadastro">
                     <f:facet name="header">Cadastrar Usuario!!!</f:facet>
-                    <h:form>
-                        <p:panelGrid columns="2">
+                    <p:panelGrid columns="2">
 
-                            <h:outputText value="Nome"/>
-                            <p:inputText value="#{UsuarioBean.usuario.nome}"/>
+                        <h:outputText value="Nome"/>
+                        <p:inputText value="#{UsuarioBean.usuario.nome}"/>
 
-                            <h:outputText value="Login"/>
-                            <p:inputText value="#{UsuarioBean.usuario.login}"/>
+                        <h:outputText value="Sobrenome:"/>
+                        <p:inputText value="#{UsuarioBean.usuario.sobrenome}"/>
 
-                            <h:outputText value="Senha"/>
-                            <p:inputText type="password" value="#{UsuarioBean.usuario.senha}"/>
+                        <h:outputText value="E-mail:"/>
+                        <p:inputText value="#{UsuarioBean.usuario.email}"/>
 
-                        </p:panelGrid>
-                        <p:commandButton value="Cadastrar" action="#{UsuarioBean.inserir()}" 
-                                         oncomplete="location.href='index.xhtml'" update=":formulario"/>
-                        <p:commandButton value="Cancelar" oncomplete="PF('widCadastro').hide()"/>
-                    </h:form>
+                        <h:outputText value="Login"/>
+                        <p:inputText value="#{UsuarioBean.usuario.login}"/>
+
+                        <h:outputText value="Senha"/>
+                        <p:inputText type="password" value="#{UsuarioBean.usuario.senha}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" actionListener="#{UsuarioBean.inserir()}" 
+                                     oncomplete="PF('widCadastro').hide()"/>
+                    <p:commandButton value="Cancelar" oncomplete="PF('widCadastro').hide()"/>
                 </p:dialog>
 
             </h:form>

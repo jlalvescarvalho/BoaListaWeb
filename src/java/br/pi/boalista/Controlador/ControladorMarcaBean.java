@@ -8,7 +8,7 @@ package br.pi.boalista.Controlador;
 
 import br.pi.boalista.Modelo.Marca;
 import br.pi.boalista.Modelo.Repositorio.RepositorioMarca;
-import br.pi.boalista.Modelo.dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;

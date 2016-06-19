@@ -6,7 +6,7 @@
 package br.pi.boalista.Modelo.Repositorio;
 
 
-import br.pi.boalista.Modelo.dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Usuario;
 import java.util.List;
 
@@ -27,8 +27,8 @@ public class RepositorioUsuario implements RepositorioGenerico<Usuario, Long> {
     }
     
     public Usuario recuperarUser(String login, String senha) {
-        Usuario user = null;
-        List<Usuario> lista = ((List<Usuario>)DaoManagerHiber.getInstance().recover("from usuario where login="+login+" and senha="+senha));
+        Usuario user = new Usuario();
+        List<Usuario> lista = DaoManagerHiber.getInstance().recover("from usuario where login="+login+" and senha="+senha);
         
         if(lista.size()>0){
             user = lista.get(0);

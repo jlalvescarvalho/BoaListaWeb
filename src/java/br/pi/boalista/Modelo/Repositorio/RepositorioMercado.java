@@ -5,7 +5,7 @@
  */
 package br.pi.boalista.Modelo.Repositorio;
 
-import br.pi.boalista.Modelo.dao.DaoManagerHiber;
+import br.pi.boalista.Modelo.Dao.DaoManagerHiber;
 import br.pi.boalista.Modelo.Mercado;
 import java.util.List;
 

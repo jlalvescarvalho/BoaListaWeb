@@ -20,8 +20,7 @@ public class ControladorLogin {
 
     public ControladorLogin() {
         
-        HttpSession session = ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-                .getSession(true));
+        HttpSession session = ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true));
         
         controleUsuario=(ControladorUsuarioBean)session.getAttribute("controleUsuario");
         
@@ -32,20 +31,20 @@ public class ControladorLogin {
     }
   
     public String realizarLogin(String login, String senha){
-        logarFuncionario(login, senha);
+        logarUsuario(login, senha);
         
         if(usuarioLogado == null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atenção!", "Funcionário Não Cadastrado!"));
             return "/index.xhtml";
         }else if(usuarioLogado != null){
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bem Vindo! "+usuarioLogado.getNome()));
-            return "/ListatProduto.xhtml";
+            return "/ListarProduto.xhtml";
         }
         
         return null;
     }
     
-    public void logarFuncionario(String login, String senha){
+    public void logarUsuario(String login, String senha){
      Usuario u = controleUsuario.recuperar(login, senha);
       if(u != null){
           FacesContext fc = FacesContext.getCurrentInstance();
