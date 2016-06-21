@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Cadastrar SuperMercado</title>
+    </h:head>
+    <h:body>
+        <ui:include src="MenuUser.xhtml"/>
+         <p:separator/>
+        <form id="form">
+       
+           
+           
+                <p:panelGrid columns="2">
+                    
+                    <h:outputText value="Cpf_Cnpj:"/>
+                    <p:inputText value="#{MercadoBean.mercado.cpf_cnpj}"/>
+ 
+                    <h:outputText value="Razão:"/>
+                    <p:inputText value="#{MercadoBean.mercado.razao}"/>
+                    
+                    <h:outputText value="Nome Fantasia:"/>
+                    <p:inputText value="#{MercadoBean.mercado.nome_fantasia}"/>
+                    
+                    <h:outputText value="Telefone:"/>
+                    <p:inputText value="#{MercadoBean.mercado.telefone}"/>
+                   
+ 
+                </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{MercadoBean.inserir()}"/>
+                   
+                        
+                   
+                    
+            </form>
+         
+    </h:body>
+</html>
+
