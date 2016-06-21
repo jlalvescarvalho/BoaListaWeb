@@ -2,14 +2,22 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
     <h:head>
         <title>Menu</title>
     </h:head>
     <h:body>
-        <h:form id="formulario">            
+        <c:if test="${controleLogin.usuarioLogado==null}">
+                <script>
+                    location.href="index.xhtml";
+                </script>
+            </c:if>
+        <h:form id="formulario">  
+               
             <p:menubar>
+          
                 <p:submenu label="Cadastro" icon="ui-icon-document">
                     <p:menuitem value="Produto" outcome="CadastrarProduto.xhtml" />
                 <p:menuitem value="Usuario" outcome="CadastrarUsuario.xhtml" />

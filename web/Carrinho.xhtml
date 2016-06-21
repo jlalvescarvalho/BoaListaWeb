@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Venda</title>
+    </h:head>
+    <h:body>
+        
+      
+        <ui:include src="MenuUser.xhtml"/>
+      <p:growl id="gro" sticky="false" life="3000"/>   
+       
+        <p:panelGrid columns="2">
+           
+            <h:form id="FormularioGeral">
+                  
+                   
+                <p:dataTable id="TabelaProduto" value="#{ProdutoBean.recuperarTodos()}" var="produtos"
+                             paginator="true" rows="6">
+                    <f:facet name="header">
+                    Lista de Produtos
+                </f:facet>
+                    
+                    <p:column headerText="Produto" filterBy="#{produtos.nome}">
+                        <h:outputText value="#{produtos.nome}"/>
+                </p:column>
+                
+                    <p:column headerText="Código" filterBy="#{produtos.codigo}">
+                        <h:outputText value="#{produtos.codigo}"/>
+                </p:column>
+                
+                <p:column headerText="Marca">
+                    <h:outputText value="#{produtos.marca.nome}"/>
+                </p:column>
+                    
+                    <p:column headerText="Tipo">
+                        <h:outputText value="#{produtos.tipoProduto.nome}"/>
+                </p:column>
+                    
+                     <p:column headerText="Valor Unitário">
+                         <h:outputText value="#{produtos.tipoProduto.valor}"/>
+                </p:column>
+                           
+                
+                <p:column headerText="Adicionar">
+                    <p:commandButton icon="ui-icon-plus" actionListener="#{vendaBean.adicionar(produtos)}"
+                                     update=":FormularioVenda:TabelaVenda :FormularioValor"/>
+                </p:column>
+                    
+                    
+                </p:dataTable>
+                
+                
+            </h:form>
+            
+            <h:form id="FormularioVenda">
+                
+                  <p:growl id="groVenda" sticky="false" life="3000"/>
+                  
+                  
+                <p:dataTable id="TabelaVenda" value="#{vendaBean.listaItens}" var="itens"
+                             paginator="true" rows="10">
+                   <f:facet name="header">
+                    Adicione Aqui Os Produtos
+                </f:facet>
+                                                           
+                <p:column headerText="Produto">
+                    <h:outputText value="#{itens.produto.nome}"/>
+                </p:column>
+                
+                 <p:column headerText="Código">
+                     <h:outputText value="#{itens.produto.codigo}"/>
+                </p:column>
+                
+                <p:column headerText="Valor Unitário">
+                    <h:outputText value="#{itens.produto.preço}"/>
+                    
+                </p:column>
+                 <p:column headerText="Quantidade">
+                     <h:outputText value="#{itens.quantidade}"/>
+                </p:column>
+                
+                   <p:column headerText="Valor Parcial">
+                       <h:outputText value="#{itens.produto.tipoProduto.valor}"/>
+                </p:column>
+                    
+                      
+                
+                 <p:column headerText="Remover">
+                     <p:commandButton icon="ui-icon-trash" actionListener="#{vendaBean.remover(itens)}"
+                                      update=":FormularioVenda: TabelaVenda :FormularioValor  "/>
+                </p:column>
+                             
+                
+                </p:dataTable>
+                 
+            </h:form>
+            
+        </p:panelGrid>
+        <p:separator/>
+        <h:form id="FormularioValor">
+           
+        <p:panelGrid columns="2">
+            <h:outputText id="idvalortotal" value="Valor Total: #{vendaBean.vendaCadastro.valorTotal}"/>
+            <p:commandButton value="Efetuar Pedido" actionListener="#{vendaBean.carregarDadosVenda()}"
+                             oncomplete="PF('widDial').show();"
+                             update=":FormularioDial"/>
+            </p:panelGrid>
+            </h:form >
+            
+            <p:dialog id="IdDialogo" visible="false"
+                             widgetVar="widDial">
+                
+                <f:facet name="header"> 
+                Resumo da Venda!!!
+            </f:facet>
+                
+                <h:form id="FormularioDial">
+                    
+                    <h:panelGrid id="idPainelDial" columns="2">
+                        
+                    <h:outputText value="Data: "/>
+                    <h:outputText value="#{vendaBean.vendaCadastro.dataVenda}"/>
+                    
+                    <h:outputText value="Hora: "/>
+                    <h:outputText value="#{vendaBean.vendaCadastro.horavenda}"/>
+                    
+                    <h:outputText value="Valor Total: "/> 
+                    <h:outputText id="idval" value="#{vendaBean.vendaCadastro.valorTotal}"/>
+                    
+                     <h:outputText value="Mesa"/>
+                     <p:inputText value="#{vendaBean.vendaCadastro.mesa}"/>
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="2">
+                        
+                        <p:commandButton value="Finalizar" actionListener="#{vendaBean.inserir()}"
+                                         oncomplete="PF('widDial').hide();"
+                                         update=":FormularioVenda :FormularioValor"/>
+                        
+                        <p:commandButton value="Voltar" oncomplete="PF('widDial').hide();"/>
+                    </h:panelGrid>
+                    
+                    
+                </h:form>
+                
+            </p:dialog>
+        
+        
+    </h:body>
+</html>
+

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastrar SuperMercado</title>
     </h:head>
@@ -12,14 +13,17 @@
          <p:separator/>
         <form id="form">
        
-           
+            
            
                 <p:panelGrid columns="2">
+                    <f:facet name="header">
+                    Cadastrar Supermercado
+                </f:facet>
                     
                     <h:outputText value="Cpf_Cnpj:"/>
                     <p:inputText value="#{MercadoBean.mercado.cpf_cnpj}"/>
  
-                    <h:outputText value="Razão:"/>
+                    <h:outputText value="Razão Social:"/>
                     <p:inputText value="#{MercadoBean.mercado.razao}"/>
                     
                     <h:outputText value="Nome Fantasia:"/>

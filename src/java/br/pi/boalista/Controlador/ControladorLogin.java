@@ -1,6 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.pi.boalista.Controlador;
 
+
+import br.pi.boalista.Controlador.ControladorUsuarioBean;
 import br.pi.boalista.Modelo.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -9,9 +19,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Luciano
+ * @author 1860915
  */
-@ManagedBean(name = "LoginBean")
+@ManagedBean(name="controleLogin")
 @SessionScoped
 public class ControladorLogin {
     
@@ -20,7 +30,8 @@ public class ControladorLogin {
 
     public ControladorLogin() {
         
-        HttpSession session = ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true));
+        HttpSession session = ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+                .getSession(true));
         
         controleUsuario=(ControladorUsuarioBean)session.getAttribute("controleUsuario");
         
@@ -31,20 +42,21 @@ public class ControladorLogin {
     }
   
     public String realizarLogin(String login, String senha){
-        logarUsuario(login, senha);
+        logarFuncionario(login, senha);
         
         if(usuarioLogado == null){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atenção!", "Funcionário Não Cadastrado!"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Atenção!", "Usuário Não Cadastrado!"));
             return "/index.xhtml";
         }else if(usuarioLogado != null){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bem Vindo! "+usuarioLogado.getNome()));
+             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Bem Vindo! " + usuarioLogado.getNome()));
+       
             return "/ListarProduto.xhtml";
         }
         
         return null;
     }
     
-    public void logarUsuario(String login, String senha){
+    public void logarFuncionario(String login, String senha){
      Usuario u = controleUsuario.recuperar(login, senha);
       if(u != null){
           FacesContext fc = FacesContext.getCurrentInstance();
@@ -74,6 +86,6 @@ public class ControladorLogin {
         
         
     }
-
-    
+  
+  
 }

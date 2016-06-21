@@ -20,7 +20,15 @@
                     <p:menuitem value="Produtos" outcome="ListarProduto.xhtml"/>
                     
                 </p:submenu>
-                <p:menuitem value="Sair" url="index.xhtml" icon="ui-icon-close" />
+                
+                <p:submenu label="Simulador" >
+                    <p:menuitem value="Carrinho" url="Carrinho.xhtml"/>
+                </p:submenu>
+                
+                <p:submenu label="#{controleLogin.usuarioLogado.nome}" style="position: absolute; right: 0px">
+                    <p:menuitem value="Sair" url="index.xhtml"/>
+                </p:submenu>
+                
                
                 
             </p:menubar>

@@ -28,8 +28,8 @@ public class RepositorioUsuario implements RepositorioGenerico<Usuario, Long> {
     
     public Usuario recuperarUser(String login, String senha) {
         Usuario user = new Usuario();
-        List<Usuario> lista = DaoManagerHiber.getInstance().recover("from usuario where login="+login+" and senha="+senha);
-        
+         List<Usuario> lista = ((List<Usuario>)DaoManagerHiber.getInstance().recover("from usuario where login='"+login+"' and "
+                + "senha='"+senha+"'"));
         if(lista.size()>0){
             user = lista.get(0);
         }

@@ -8,9 +8,11 @@
         
          </h:head> 
     <h:body>
-        <ui:include src="Menu2.xhtml"/>
-        
+         <p:growl id="gro" sticky="false" life="3000"/> 
+        <ui:include src="MenuUser.xhtml"/>
+          
         <h:form id="formostrar">
+           
         <p:dataTable value="#{ProdutoBean.recuperarTodos()}" var="item" paginator="true" 
                      rows="10" rowKey="#{item.id}" selectionMode="single" selection="#{ProdutoBean.produto}">
                 <f:facet name="header">

@@ -28,7 +28,7 @@
                         <p:inputText type="password" value="#{senha}"/>
                     </p:panelGrid>
 
-                    <p:commandButton value="Entrar" action="#{LoginBean.realizarLogin(login, senha)}" update="gro"/>
+                    <p:commandButton value="Entrar" action="#{controleLogin.realizarLogin(login, senha)}" update="gro"/>
                     <p:commandButton value="Cancelar" oncomplete="PF('widDial2').hide()"/>
                 </p:dialog>
 

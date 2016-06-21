@@ -78,6 +78,7 @@ public class ControladorProdutoBean implements InterfaceController{
         produto.setTipoProduto(tipo);
         repProduto.inserir(produto);
         
+      
         
     }
 
